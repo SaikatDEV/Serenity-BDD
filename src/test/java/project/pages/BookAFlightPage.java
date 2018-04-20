@@ -42,7 +42,7 @@ public class BookAFlightPage extends PageObject {
 	@FindBy(css = "[name='login']")
 	private WebElementFacade fld_singin;
 	
-	@FindBy(css = "body > div > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > img")
+	@FindBy(css = "img[src$='flightfinder.gif']")
 	private WebElementFacade fld_flight_finder;
 	
 	
@@ -80,13 +80,15 @@ public class BookAFlightPage extends PageObject {
 	public void verifyPageIsLoaded() {
 		waitForWithRefresh();
 //		helper.ignoreStaleElementError(fld_Primary_Scans, 15);
-//		fld_flight_finder.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilVisible();
+		fld_flight_finder.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilVisible();
 //		fld_Secondary_Scans.waitUntilVisible();
-//		fld_flight_finder.waitUntilVisible();
-//		Assert.assertEquals("FLIGHT FINDER", fld_flight_finder.getText());
-//		Log.info("Flight Finder page has been loaded");	
-	
+		fld_flight_finder.waitUntilVisible();
 		
+		Log.info("Flight Finder Page is Loaded: " + fld_flight_finder.isDisplayed());
+		
+//		Assert.assertEquals("FLIGHT FINDER", fld_flight_finder.getText());
+		Assert.assertTrue("FLIGHT FINDER", fld_flight_finder.isDisplayed());
+			
 	}
 
 
