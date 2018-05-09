@@ -86,5 +86,9 @@ public class UIStepDef {
 		uiSteps.user_log_out_from_the_app();
 	}
 	
+	@Given("^upload word document$")
+	public void upload_word_document() throws Exception {
+		uiSteps.upload_word_doc();
+	}
 }
 

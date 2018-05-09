@@ -95,4 +95,9 @@ public class UISteps extends ScenarioSteps {
 		landingPage.clickOnAddUserButton();
 		
 	}
+
+	@Step
+	public void upload_word_doc() {
+		samplePage.uploadWordDoc();
+	}
 }

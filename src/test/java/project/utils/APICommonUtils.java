@@ -24,6 +24,15 @@ public class APICommonUtils {
 		reqTestBodyasMap.put("programme", "TestProgramme2");
 		reqTestBodyasMap.put("courses", courses);
 	}
+	
+	// Login Body Internal
+	public static final HashMap<String, Object> reqTestBodyasMapOdos = new HashMap<>();
+	static {
+		
+		reqTestBodyasMap.put("pesel", "1111111");
+		reqTestBodyasMap.put("name", "odosName1");
+		reqTestBodyasMap.put("type", "odosType1");
+	}
 
 	// Identify Body Internal
 	public static final HashMap<String, Object> createIdentifyReqBodyasMap = new HashMap<>();
