@@ -29,21 +29,16 @@ public class APISteps extends ScenarioSteps {
 		Response loginres = given()
 //				.proxy("",80)
 				.headers("Content-Type", "application/json")
-				.body(APICommonUtils.reqTestBodyasMap)
+				.body(APICommonUtils.reqTestBodyasMapOdos)
 				.log().all()
 				.when().post(url);
-		System.out.println("------------------------------------");
-		
+
 		loginres.prettyPrint();
-						
-		
 		
 		JsonPath jsonPathEvaluator = loginres.jsonPath();
 		
-	
-
-		String first_name = jsonPathEvaluator.get("msg");
-		Log.info("New added student first_name = " + first_name);
+		String name = jsonPathEvaluator.get("msg");
+		Log.info("New added student first_name = " + name);
 //		Serenity.setSessionVariable("newId").to(first_name);
 //		
 //		Assert.assertTrue("Data was not added", first_name.equalsIgnoreCase("TestFirstName2"));	

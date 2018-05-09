@@ -1,5 +1,9 @@
 package project.pages;
 
+import org.openqa.selenium.interactions.Actions;
+
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import project.utils.HelperMethods;
 import project.utils.Utilities;
@@ -16,6 +20,47 @@ public class SamplePage extends PageObject {
 	HelperMethods helper = new HelperMethods();
 	public Utilities util = new Utilities();
 
+@FindBy(css = "[id^='autogen_id'] > div > button")
+private WebElementFacade btn_selectUploadDoc;
+	
+@FindBy(css="#global_header > header > div.right_tools > span > a.sign_in_btn.outline_btn.flat_btn > span.flat_btn_content")
+private WebElementFacade btn_singIn;
+	
+@FindBy(css="#login_or_email")
+private WebElementFacade btn_id;
+
+@FindBy(css="#login_password")
+private WebElementFacade btn_pass;
+
+@FindBy(css="#login_drop > div > div > div > div > form > fieldset > div.button_container > button > span")
+private WebElementFacade btn_submit;
+
+
+	public void uploadWordDoc() {
+		getDriver().get("https://www.scribd.com/upload-document");
+		getDriver().manage().window().maximize();
+		
+		helper.waitInSeconds(1);
+		btn_singIn.waitUntilClickable().click();
+		
+		btn_id.waitUntilClickable().sendKeys("subash.dutt.b@gmail.com");
+		btn_pass.waitUntilPresent().sendKeys("Welcome0001");
+		
+		btn_submit.waitUntilPresent().click();
+
+		   Actions builder = new Actions(getDriver());
+		    Actions hoverOverLocationSelector = builder.moveToElement(btn_selectUploadDoc);
+		    hoverOverLocationSelector.perform();
+	
+		helper.waitInSeconds(1);
+		btn_selectUploadDoc.click();
+		
+		btn_selectUploadDoc.waitUntilClickable().sendKeys("/Users/MacPro/Desktop/sample/sample.docx");;
+		helper.waitInSeconds(3);
+	}	
+	
+	
+	
 /*
 	
 //	PAGE OBJECTs are located Here
